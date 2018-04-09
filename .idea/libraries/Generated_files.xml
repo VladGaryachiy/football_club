@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/public/react-views/components/navbar.js" />
+        <item url="file://$PROJECT_DIR$/public/react-views/app.js" />
+        <item url="file://$PROJECT_DIR$/public/react-views/main_component.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/public/react-views/index.js" />
+      <root url="file://$PROJECT_DIR$/public/react-views/index.js" />
+      <root url="file://$PROJECT_DIR$/public/react-views/components/navbar.js" />
+      <root url="file://$PROJECT_DIR$/public/react-views/app.js" />
+      <root url="file://$PROJECT_DIR$/public/react-views/main_component.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

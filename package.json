@@ -1,0 +1,51 @@
+{
+  "name": "footbal_club",
+  "version": "1.0.0",
+  "description": "football",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "browserify": "^16.1.1",
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "nodemailer": "^4.6.2",
+    "path": "^0.12.7",
+    "pg": "^6.4.2",
+    "pg-connect": "^2.0.2",
+    "rc-scroll-anim": "^2.2.1",
+    "rc-tween-one": "^1.7.3",
+    "react": "^16.2.0",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-children-render": "^1.0.2",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "sendgrid": "^2.0.0",
+    "velocity": "^0.7.2",
+    "velocity-animate": "^1.5.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1"
+  },
+  "babel": {
+    "presets": [
+      "react"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/babel public/view/index.jsx -o public/view/index.js -w",
+    "compile": "browserify public/react-views/app.js -o public/js/main.js -d -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "Football"
+  ],
+  "author": "Oleg Larin",
+  "license": "ISC"
+}

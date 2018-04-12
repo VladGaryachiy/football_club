@@ -1,0 +1,90 @@
+.navbar-container-main{
+    top:0;
+    left: 0;
+    position: fixed;
+    display: block;
+    background-color: rgba(237, 237, 237, 0.6);
+    width: 80px;
+    height: 100%;
+}
+.navbar-element {
+    list-style-type: none;
+    margin-top: 70px;
+    margin-left: 18%;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+
+.first-element{
+    margin-top:0;
+}
+.menu-links-container{
+    padding: 0;
+    margin-top:-50px;
+}
+.navbar-ico{
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    padding-top: 3px;
+    color: rgba(7, 77, 168, 1);
+    font-size: 30px;
+    text-align: center;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid rgba(7, 77, 168, 1);
+
+}
+
+.part-name{
+    z-index: 1;
+    position: absolute;
+    display: inline-block;
+    opacity:0;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 50px;
+    border-radius: 70px;
+    border: 2px solid rgba(7, 77, 168, 1);
+    background-color: rgba(7, 77, 168, 1);
+    margin-top: 0;
+    margin-left: 7px;
+
+    color:white;
+
+    text-align: right;
+    padding-right: 30px;
+    padding-top: 13px;
+
+    font-family: Verdana , sans-serif;
+    font-size: 15px;
+
+}
+.navbar-element{
+    position: relative;
+    width: 100%;
+}
+
+.fa-home,.fa-phone,.fa-credit-card,.fa-users{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding-top: 16%;
+    margin-top: -3px;
+    margin-left: -25px;
+    position: absolute;
+}
+.glyphicon-facetime-video{
+    margin-top: 4px;
+}
+
+.navbar-table{
+    width: 100%;
+    height: 100%;
+
+}

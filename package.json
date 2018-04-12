@@ -37,7 +37,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/babel public/view/index.jsx -o public/view/index.js -w",
-    "compile": "browserify public/react-views/app.js -o public/js/main.js -d -w"
+    "compile": "browserify public/views/app.js -o public/js/main.js -d -w"
   },
   "repository": {
     "type": "git",

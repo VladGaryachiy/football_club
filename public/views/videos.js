@@ -1,6 +1,7 @@
 let React = require('react');
+let ReactDOM = require('react-dom');
 
-class Navbar extends React.Component {
+class Videos extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -9,9 +10,9 @@ class Navbar extends React.Component {
         return React.createElement(
             'h1',
             null,
-            'NAVBAR'
+            'VIDEOS PAGE'
         );
     }
 }
 
-module.exports.Navbar = Navbar;
+module.exports.Videos = Videos;

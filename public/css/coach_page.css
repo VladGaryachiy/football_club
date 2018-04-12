@@ -1,0 +1,143 @@
+.coach-cart-img{
+    height: 300px;
+    width: 220px;
+}
+.coaches-main-name{
+    margin-bottom: 5%;
+    background-color: rgba(150, 150, 150, 0.89);
+    padding: 10px;
+    color: white;
+    font-family: Andale Mono, monospace;
+}
+
+.coaches-full-name {
+    font-size: 17px;
+    color: rgba(7, 77, 168, 1);
+    font-family: Verdana, sans-serif;
+}
+.cart-coach{
+    background-color: rgba(195, 195, 195, 0.89);
+    margin-bottom: 40px;
+    border: 1px solid rgba(199, 182, 182, 0.89);
+    text-align: center;
+    margin-left: 29px;
+    width: 352px;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    padding-left: 16px;
+}
+.coaches-img-container{
+    background-color: white;
+    width: 320px;
+    padding-top: 20px
+}
+.coaches-name-container{
+
+}
+
+.coaches-full-name{
+
+}
+
+.button-read-more-info-coaches-container{
+
+}
+.read-more-about-coach{
+
+}
+.coach_img3{
+    width:280px;
+}
+.coach-cart-container{
+    padding-left: 40px;
+}
+
+.coach-about-main-container-in-modal{
+    margin-left: -28%;
+    width: 920px;
+    padding: 20px 30px 20px 60px;
+}
+
+.modal-img-container{
+    margin-top: 20px;
+    margin-left: -10px
+
+}
+.modal-coach-img-container{
+    float: left;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 17px solid rgba(195, 195, 195, 0.89);
+}
+.modal-img{
+    height: 380px;
+    width: 290px;
+    float: left;
+    border-right: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding-right: 30px;
+
+}
+.modal-img-sum{
+    height: 390px;
+    width: 370px;
+    float: left;
+    border-right: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding-right: 30px;
+}
+
+.modal-characteristic-container{
+}
+.modal-coach-surname{
+    color: rgba(7, 77, 168, 1);
+    font-size: 30px;
+    font-family: Verdana,sans-serif;
+}
+
+.modal-coach-name-and-father_name{
+    color: rgba(7, 77, 168, 1);
+    font-size: 29px;
+    font-family: Verdana,sans-serif;
+    padding-bottom: 15px;
+}
+.modal-coach-sport-title{
+    color: #ff0202;
+    text-align: left;
+    font-size: 20px;
+    font-family: Tahoma,sans-serif;
+
+}
+.modal-coach-who-is-trained{
+    color: #ff0202;
+    text-align: left;
+    font-size: 20px;
+    font-family: Tahoma,sans-serif;
+    padding-bottom: 15px;
+}
+.modal-biography{
+    padding: 20px;
+}
+.modal-coach-biography{
+    text-align: justify;
+    padding-top: 5px;
+    font-size: 17px;
+    font-family: Verdana,sans-serif;
+}
+.modal-coach-age{
+    color: #ff0202;
+    text-align: left;
+    font-size: 20px;
+    font-family: Tahoma,sans-serif;
+}
+.exit{
+    float: right;
+}
+.modal-text-float{
+    float: left;
+}

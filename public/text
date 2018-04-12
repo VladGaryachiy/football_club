@@ -1,0 +1,77 @@
+     <ul className="menu-links-container">
+                                <li className="navbar-element"  onClick={this.UpScroll}>
+                                    {/*головна*/}
+                                    <Link to="/"  id="data-name-zero" >
+                            <span className="navbar-ico">
+                                <i onMouseOver={this.NavigationUp} onMouseOut={this.NavigationOut} className="fa fa-home"></i>
+                            </span>
+                                        <span className="part-name" data-name-zero>Головна</span>
+                                    </Link>
+                                </li>
+                                <li className="navbar-element"   onClick={this.UpScroll}>
+                                    {/*відеоархів*/}
+                                    <Link to="/video"  id="data-name-one">
+                            <span className="navbar-ico">
+                                <i onMouseOver={this.NavigationUp} onMouseOut={this.NavigationOut} className="fa fa-youtube"></i>
+                            </span>
+                                        <span className="part-name" data-name-one>Відеоархів</span>
+                                    </Link>
+                                </li>
+                                <li className="navbar-element"   onClick={this.UpScroll}>
+                                    {/*контакти*/}
+                                    <Link to="/contacts"  id="data-name-two">
+                            <span className="navbar-ico">
+                                 <i onMouseOver={this.NavigationUp} onMouseOut={this.NavigationOut} className="fa fa-phone"></i>
+                             </span>
+                                        <span className="part-name" data-name-two>Контакти</span>
+                                    </Link>
+                                </li>
+                                <li className="navbar-element"   onClick={this.UpScroll}>
+                                    {/*платні послуги*/}
+                                    <Link to="/pay-training"  id="data-name-three">
+                            <span className="navbar-ico">
+                                <i onMouseOver={this.NavigationUp} onMouseOut={this.NavigationOut} className="fa fa-credit-card"></i>
+                            </span>
+                                        <span className="part-name" data-name-three>Платні послуги</span>
+                                    </Link>
+                                </li>
+                                <li className="navbar-element"   onClick={this.UpScroll}>
+                                    {/*тренерський склад*/}
+                                    <Link to="/coaches"  id="data-name-four">
+                            <span className="navbar-ico">
+                                <i onMouseOver={this.NavigationUp} onMouseOut={this.NavigationOut} className="fa fa-users"></i>
+                            </span>
+                                        <span className="part-name" data-name-four>Тренерський склад</span>
+                                    </Link>
+                                </li>
+                            </ul>
+
+
+
+
+let pg = require('pg');
+let connect = "postgres://eduonix:1111@localhost/football";
+
+module.exports = function (req,res) {
+
+    pg.connect(connect,function (err,client,done) {
+        if(err){
+            return console.error('Error',err);
+        }
+        client.query(
+            'SELECT * FROM coaches JOIN sport_title ON coaches.id_sport_title =  sport_title.id\n' +
+            'JOIN who_is_trained ON sport_title.id_who_is_trained = who_is_trained.id',function (err,result) {
+                if(err){
+                    return console.error('Error',err);
+                }
+
+                res.status(200).json({result:result.rows});
+
+                done();
+
+
+            })
+    });
+
+
+};

@@ -1,0 +1,116 @@
+.pay_training-main-name{
+    margin-bottom: 5%;
+    background-color: rgba(150, 150, 150, 0.89);
+    padding: 10px;
+    color: white;
+    font-family: Andale Mono, monospace;
+
+
+}
+
+.pay_training_main_forms_container{
+    margin-left: -15%;
+    width: 800px;
+}
+
+.coach_list{
+    display: none;
+    padding: 0;
+}
+.element-select-list{
+
+    padding: 5px;
+    z-index: 99999;
+    list-style-type: none;
+    width: 100%;
+    border: 1px solid #acacac;
+    margin-top: 1px;
+    border-radius: 0;
+    margin-bottom: 2px;
+    height: 30px;
+
+}
+.element-select-list:hover{
+    background-color: #337ab7;
+    color: white;
+    cursor: pointer;
+}
+.error{
+    background: rgba(217, 0, 0, 0.4);
+    border: 1px solid rgba(217, 0, 0, 0.4);
+    border-radius: 3px;
+    text-align: center;
+    color: white;
+    margin-top:15px;
+    margin-bottom:20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+}
+.success{
+    background: rgba(15, 189, 27, 0.6);
+    border: 1px solid rgba(15, 189, 27, 0.6);
+    border-radius: 3px;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin-top:15px;
+    margin-bottom:20px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.modal-go-to-training-form{
+    width: 500px;
+    margin-left: 17%;
+}
+.form-control-2{
+    margin-top: 15px;
+}
+.needs{
+    color:blue;
+    font-size:20px;
+}
+
+.age-category{
+    font-size: 23px;
+    margin-left: -14px;
+    margin-right: -14px;
+    padding: 15px;
+    background-color: #eeeeee;
+    margin-top: 1px;
+}
+.amount_places_in_group{
+    color: #337ab7;
+    font-size: 17px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+.button-group{
+    margin-top: 35px;
+    margin-bottom: 15px;
+    float: right;
+}
+.btn-success{
+    margin-right: 10px;
+}
+.form_check_coach_name{
+    font-size: 17px;
+}
+.p_training_button{
+    margin-top: 10px;
+    width: 300px;
+    padding: 10px;
+
+}
+.p_training_open_form_name{
+    font-size: 20px;
+    color:#006bc7;
+}
+.pay_training_check_name{
+    font-size: 25px;
+    margin-top: -20px;
+    border-bottom: 1px solid #e6e2e2;
+    padding-bottom: 10px;
+}

@@ -121,7 +121,7 @@ class Coaches extends React.Component {
                                 React.createElement(
                                     'div',
                                     { className: 'col-md-12 col-sm-12 col-xs-12 modal-img-container' },
-                                    allInfoCoach.surname === 'Сумахін' ? React.createElement('img', { src: allInfoCoach.coach_img, alt: '', className: 'modal-img-sum' }) : React.createElement('img', { src: allInfoCoach.coach_img, alt: '', className: 'modal-img' }),
+                                    React.createElement('img', { src: allInfoCoach.coach_img, alt: '', className: "modal-img individual-img-coach-id_" + allInfoCoach.coach_id }),
                                     React.createElement(
                                         'div',
                                         { className: 'modal-characteristic-container' },
@@ -131,30 +131,40 @@ class Coaches extends React.Component {
                                             allInfoCoach.surname
                                         ),
                                         React.createElement(
-                                            'h2',
-                                            { className: 'modal-coach-name-and-father_name' },
-                                            allInfoCoach.name,
-                                            ' \xA0',
-                                            allInfoCoach.father_name
+                                            'div',
+                                            { className: 'name_surname_container' },
+                                            React.createElement(
+                                                'h2',
+                                                { className: 'modal-coach-name-and-father_name' },
+                                                allInfoCoach.name,
+                                                ' \xA0',
+                                                allInfoCoach.father_name
+                                            )
                                         ),
+                                        React.createElement('p', { className: 'line' }),
                                         React.createElement(
-                                            'h3',
-                                            { className: 'modal-coach-age' },
-                                            '\u0412\u0456\u043A: ',
-                                            allInfoCoach.age
+                                            'div',
+                                            { className: 'other_characteristic_container' },
+                                            React.createElement(
+                                                'h3',
+                                                { className: 'modal-coach-age' },
+                                                '\u0412\u0456\u043A: ',
+                                                allInfoCoach.age
+                                            ),
+                                            React.createElement(
+                                                'h3',
+                                                { className: 'modal-coach-sport-title' },
+                                                '\u0421\u043F\u043E\u0440\u0442\u0438\u0432\u043D\u0435 \u0437\u0432\u0430\u043D\u043D\u044F: ',
+                                                allInfoCoach.name_sport_title
+                                            ),
+                                            React.createElement(
+                                                'h3',
+                                                { className: 'modal-coach-who-is-trained' },
+                                                '\u041A\u043E\u0433\u043E \u0442\u0440\u0435\u043D\u0443\u0454: ',
+                                                allInfoCoach.name_who_is_trained
+                                            )
                                         ),
-                                        React.createElement(
-                                            'h3',
-                                            { className: 'modal-coach-sport-title' },
-                                            '\u0421\u043F\u043E\u0440\u0442\u0438\u0432\u043D\u0435 \u0437\u0432\u0430\u043D\u043D\u044F: ',
-                                            allInfoCoach.name_sport_title
-                                        ),
-                                        React.createElement(
-                                            'h3',
-                                            { className: 'modal-coach-who-is-trained' },
-                                            '\u041A\u043E\u0433\u043E \u0442\u0440\u0435\u043D\u0443\u0454: ',
-                                            allInfoCoach.name_who_is_trained
-                                        )
+                                        React.createElement('p', { className: 'line' })
                                     ),
                                     React.createElement(
                                         'p',

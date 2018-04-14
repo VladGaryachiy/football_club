@@ -4,6 +4,7 @@ let connect = "postgres://eduonix:1111@localhost/football";
 
 module.exports = function (req,res) {
 
+
     pg.connect(connect,function (err,client,done) {
         if(err){
             return console.error('Error',err);

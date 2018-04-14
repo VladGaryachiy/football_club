@@ -115,12 +115,12 @@ class Navbar extends React.Component {
                                         React.createElement(
                                             'span',
                                             { className: 'navbar-ico' },
-                                            React.createElement('i', { onMouseOver: this.NavigationUp, onMouseOut: this.NavigationOut, className: 'fa fa-credit-card' })
+                                            React.createElement('i', { onMouseOver: this.NavigationUp, onMouseOut: this.NavigationOut, className: 'fa fa-futbol-o' })
                                         ),
                                         React.createElement(
                                             'span',
                                             { className: 'part-name', 'data-name-three': true },
-                                            '\u041F\u043B\u0430\u0442\u043D\u0456 \u043F\u043E\u0441\u043B\u0443\u0433\u0438'
+                                            '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F \u043D\u0430 \u0442\u0440\u0435\u043D\u0443\u0432\u0430\u043D\u043D\u044F'
                                         )
                                     )
                                 ),

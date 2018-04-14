@@ -5,7 +5,7 @@
       <option name="arguments" value="--presets react --out-file $FileDir$/$FileNameWithoutExtension$.js $FilePath$" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
-      <option name="exitCodeBehavior" value="NEVER" />
+      <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="jsx" />
       <option name="immediateSync" value="true" />
       <option name="name" value="Babel" />

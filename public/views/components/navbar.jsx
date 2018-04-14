@@ -77,9 +77,9 @@ class Navbar extends React.Component{
                                     {/*платні послуги*/}
                                     <Link to="/pay-training"  id="data-name-three">
                                         <span className="navbar-ico">
-                                            <i onMouseOver={this.NavigationUp} onMouseOut={this.NavigationOut} className="fa fa-credit-card"></i>
+                                            <i onMouseOver={this.NavigationUp} onMouseOut={this.NavigationOut} className="fa fa-futbol-o"></i>
                                         </span>
-                                        <span className="part-name" data-name-three>Платні послуги</span>
+                                        <span className="part-name" data-name-three>Записатися на тренування</span>
                                     </Link>
                                 </li>
                                 <li className="navbar-element"   onClick={this.UpScroll}>

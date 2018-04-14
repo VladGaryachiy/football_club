@@ -2,8 +2,10 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/public/views/home.js" />
+        <item url="file://$PROJECT_DIR$/public/views/components/test.js" />
+        <item url="file://$PROJECT_DIR$/public/views/pay_training.js" />
         <item url="file://$PROJECT_DIR$/public/views/videos.js" />
+        <item url="file://$PROJECT_DIR$/public/views/home.js" />
         <item url="file://$PROJECT_DIR$/public/views/coaches.js" />
         <item url="file://$PROJECT_DIR$/public/views/pay_training.js" />
         <item url="file://$PROJECT_DIR$/public/views/components/navbar.js" />
@@ -14,8 +16,11 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/public/react-views/index.js" />
       <root url="file://$PROJECT_DIR$/public/react-views/index.js" />
-      <root url="file://$PROJECT_DIR$/public/views/home.js" />
+      <root url="file://$PROJECT_DIR$/public/views/components/test.js" />
+      <root url="file://$PROJECT_DIR$/public/views/components/test.js" />
+      <root url="file://$PROJECT_DIR$/public/views/pay_training.js" />
       <root url="file://$PROJECT_DIR$/public/views/videos.js" />
+      <root url="file://$PROJECT_DIR$/public/views/home.js" />
       <root url="file://$PROJECT_DIR$/public/views/coaches.js" />
       <root url="file://$PROJECT_DIR$/public/views/pay_training.js" />
       <root url="file://$PROJECT_DIR$/public/views/components/navbar.js" />

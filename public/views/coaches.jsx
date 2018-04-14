@@ -91,34 +91,36 @@ class Coaches extends React.Component{
                             <div className="modal-content container  coach-about-main-container-in-modal">
                                     <div className="row">
                                         <div className="col-md-12 col-sm-12 col-xs-12 modal-img-container">
-                                            {
-                                                allInfoCoach.surname === 'Сумахін' ?
-                                                    <img src={allInfoCoach.coach_img} alt="" className="modal-img-sum"/>
-                                                    :
-                                                    <img src={allInfoCoach.coach_img} alt="" className="modal-img"/>
-                                            }
+                                            <img src={allInfoCoach.coach_img} alt="" className={"modal-img individual-img-coach-id_"+allInfoCoach.coach_id}/>
                                             <div className="modal-characteristic-container">
                                                 <h1 className="modal-coach-surname">
                                                     {allInfoCoach.surname}
                                                 </h1>
-                                                <h2 className="modal-coach-name-and-father_name">
-                                                    {allInfoCoach.name} &nbsp;
-                                                    {allInfoCoach.father_name}
-                                                </h2>
-                                                <h3 className="modal-coach-age">
-                                                    Вік: {allInfoCoach.age}
-                                                </h3>
-                                                <h3 className="modal-coach-sport-title">
-                                                    Спортивне звання: {allInfoCoach.name_sport_title}
-                                                </h3>
-                                                <h3 className="modal-coach-who-is-trained">
-                                                    Кого тренує: {allInfoCoach.name_who_is_trained}
-                                                </h3>
-                                            </div>
-                                                <p className="modal-coach-biography">
-                                                    {allInfoCoach.biography}
-                                                </p>
-                                            </div>
+                                               <div className="name_surname_container">
+                                                   <h2 className="modal-coach-name-and-father_name">
+                                                       {allInfoCoach.name} &nbsp;
+                                                       {allInfoCoach.father_name}
+                                                   </h2>
+                                               </div>
+                                                <p className="line"></p>
+                                                <div className="other_characteristic_container">
+                                                    <h3 className="modal-coach-age">
+                                                        Вік: {allInfoCoach.age}
+                                                    </h3>
+                                                    <h3 className="modal-coach-sport-title">
+                                                        Спортивне звання: {allInfoCoach.name_sport_title}
+                                                    </h3>
+                                                    <h3 className="modal-coach-who-is-trained">
+                                                        Кого тренує: {allInfoCoach.name_who_is_trained}
+                                                    </h3>
+                                                </div>
+                                                <p className="line"></p>
+
+                                                </div>
+                                                    <p className="modal-coach-biography">
+                                                        {allInfoCoach.biography}
+                                                    </p>
+                                                </div>
 
                                     </div>
                                     <button type="button" className="btn btn-default exit" data-dismiss="modal">Вийти</button>

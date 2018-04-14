@@ -12,11 +12,12 @@ server.use(bodyParser.json());
 
 
 server.get('/CoachesData',require('./controllers/allCoaches.js'));
-
-
-
 server.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public/index.html'))
 });
+
+
+
+server.post('/formPayTrainingExportData',require('./controllers/visitedFootbalClub.js'));
 
 server.listen(6100,'localhost');

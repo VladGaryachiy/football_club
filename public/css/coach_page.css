@@ -1,6 +1,6 @@
 .coach-cart-img{
     height: 300px;
-    width: 220px;
+    width: 200px;
 }
 .coaches-main-name{
     margin-bottom: 5%;
@@ -46,10 +46,20 @@
 
 }
 .coach_img3{
-    width:280px;
+    width: 200px;
+}
+
+.coach_img1{
+    width: 260px;
+}
+.coach_img2{
+    width: 230px;
 }
 .coach-cart-container{
     padding-left: 40px;
+}
+.coach_img4{
+    width: 200px;
 }
 
 .coach-about-main-container-in-modal{
@@ -81,9 +91,30 @@
     padding-right: 30px;
 
 }
-.modal-img-sum{
+.individual-img-coach-id_2{
+    height: 380px;
+    width: 310px;
+    float: left;
+    border-right: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding-right: 30px;
+
+}
+.individual-img-coach-id_4{
     height: 390px;
     width: 370px;
+    float: left;
+    border-right: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding-right: 30px;
+}
+.modal-img-dubr{
+    height: 380px;
+    width: 310px;
     float: left;
     border-right: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
@@ -98,6 +129,11 @@
     color: rgba(7, 77, 168, 1);
     font-size: 30px;
     font-family: Verdana,sans-serif;
+    padding-right: 25px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+ /*   float:left;
+    width:500px;*/
 }
 
 .modal-coach-name-and-father_name{
@@ -141,3 +177,26 @@
 .modal-text-float{
     float: left;
 }
+.name_surname_container{
+/*    border-bottom: 1px solid #eeeeee;
+    width: 530px;
+    float: left;
+    margin-bottom: 20px;
+    margin-left: -10px*/
+}
+.other_characteristic_container{
+/*    border-bottom: 1px solid #eeeeee;
+    width: 530px;
+    float: left;
+    margin-bottom: 20px;
+    margin-left: -10px;
+    padding-left: 10px;*/
+}
+
+/*
+.line{
+    border-bottom: 1px solid #eeeeee;
+    width: 500px;
+    position: relative;
+    margin-left: 37.4%;
+}*/

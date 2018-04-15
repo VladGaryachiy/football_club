@@ -1,6 +1,9 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
 
+let Tween = require('rc-tween-one/lib/TweenOne');
+let ScrollOverPack = require('rc-scroll-anim/lib/ScrollOverPack');
+
 let childrenGroupCoach = [];
 let teenagerGroupCoach = [];
 let adultGroupCoach = [];
@@ -70,24 +73,32 @@ class PayTraining extends React.Component {
 
         /*-----client info------*/
 
-        let name = e.currentTarget[1].value;
-        let surname = e.currentTarget[2].value;
-        let age = e.currentTarget[3].value;
-        let city = e.currentTarget[4].value;
-        let phone = e.currentTarget[5].value;
-        let email = e.currentTarget[6].value;
+        let name = e.currentTarget[2].value;
+        let surname = e.currentTarget[3].value;
+        let age = e.currentTarget[4].value;
+        let city = e.currentTarget[5].value;
+        let phone = e.currentTarget[6].value;
+        let email = e.currentTarget[7].value;
 
         let searchId = AllCoaches[0].filter(item => {
             return item.name === nameCoach;
         });
         let id_coach = searchId[0].coach_id;
+        let name_group = searchId[0].name_who_is_trained;
 
         let result = Number(searchId[0].amount_places_in_group - 1);
 
         let exportData = {
             'id': id_coach,
+            'amount_places': result,
+            'coach_name': nameCoach,
+            'name_group': name_group,
             'name': name,
-            'amount_places': result
+            'surname': surname,
+            'age': age,
+            'city': city,
+            'phone': phone,
+            'email': email
         };
 
         if (result < 0) {
@@ -150,7 +161,7 @@ class PayTraining extends React.Component {
 
                         $('.result-container').removeClass('error');
                         $('.result-container').text('');
-                    }, 10000);
+                    }, 4000);
                 }
             });
         }
@@ -210,87 +221,103 @@ class PayTraining extends React.Component {
     }
 
     openSelectList(e) {
-        let selectName = e.currentTarget.nextSibling.children[0].className;
+        let selectName = e.currentTarget.parentElement.parentElement.nextSibling.attributes[0].value;
         $('.' + selectName).css('display', 'block');
     }
 
     render() {
         return React.createElement(
-            'div',
-            { className: 'pay_training_main_container' },
+            React.Fragment,
+            null,
             React.createElement(
-                'h1',
-                { className: 'pay_training-main-name' },
-                '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F \u043D\u0430 \u0442\u0440\u0435\u043D\u0443\u0432\u0430\u043D\u043D\u044F'
-            ),
-            React.createElement(
-                'h2',
-                { className: 'pay_training_check_name' },
-                '\u0429\u043E\u0431 \u043F\u043E\u0442\u0440\u0430\u043F\u0438\u0442\u0438 \u043D\u0430 \u0442\u0440\u0435\u043D\u0443\u0432\u0430\u043D\u043D\u044F \u0432 \u043A\u043E\u043C\u0430\u043D\u0434\u0443 \u0437\u0430\u043F\u043E\u0432\u043D\u0456\u0442\u044C \u0444\u043E\u0440\u043C\u0443 \u044F\u043A\u0430 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0432\u0430\u0448\u0456\u0439 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0456\u0457'
-            ),
-            React.createElement(
-                'div',
-                { className: 'pay_training_open_forms_main_container container ' },
+                Tween,
+                {
+                    animation: {
+                        type: 'from',
+                        ease: 'easeOutQuart',
+                        opacity: 0,
+                        translateY: '300px',
+                        duration: 900
+                    } },
                 React.createElement(
                     'div',
-                    { className: 'row' },
+                    { className: 'pay_training_main_container' },
                     React.createElement(
-                        'div',
-                        { className: 'col-md-4 p_training_first_form_container' },
-                        React.createElement(
-                            'h3',
-                            { className: 'p_training_open_form_name' },
-                            childrenGroupCoach[0].name_who_is_trained
-                        ),
-                        React.createElement('img', { src: '../img/child.jpg', height: '300px', width: '300px', alt: '', className: 'p_training_open_first_form_img' }),
-                        React.createElement(
-                            'p',
-                            { className: 'p_training_open_first_form_button_container' },
-                            React.createElement(
-                                'button',
-                                { className: 'p_training_button btn btn-primary', 'data-toggle': 'modal', 'data-target': '#first-form-modal' },
-                                '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F'
-                            )
-                        )
+                        'h1',
+                        { className: 'pay_training-main-name' },
+                        '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F \u043D\u0430 \u0442\u0440\u0435\u043D\u0443\u0432\u0430\u043D\u043D\u044F'
+                    ),
+                    React.createElement(
+                        'h2',
+                        { className: 'pay_training_check_name' },
+                        '\u0429\u043E\u0431 \u043F\u043E\u0442\u0440\u0430\u043F\u0438\u0442\u0438 \u043D\u0430 \u0442\u0440\u0435\u043D\u0443\u0432\u0430\u043D\u043D\u044F \u0432 \u043A\u043E\u043C\u0430\u043D\u0434\u0443 \u0437\u0430\u043F\u043E\u0432\u043D\u0456\u0442\u044C \u0444\u043E\u0440\u043C\u0443 \u044F\u043A\u0430 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0432\u0430\u0448\u0456\u0439 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0456\u0457'
                     ),
                     React.createElement(
                         'div',
-                        { className: 'col-md-4 p_training_second_form_container' },
+                        { className: 'pay_training_open_forms_main_container container ' },
                         React.createElement(
-                            'h3',
-                            { className: 'p_training_open_form_name' },
-                            teenagerGroupCoach[0].name_who_is_trained
-                        ),
-                        React.createElement('img', { src: '../img/tin.jpg', height: '300px', width: '300px', alt: '', className: 'p_training_open_second_form_img' }),
-                        React.createElement(
-                            'p',
-                            { className: 'p_training_open_second_form_button_container' },
+                            'div',
+                            { className: 'row' },
                             React.createElement(
-                                'button',
-                                { className: 'p_training_button btn btn-primary', 'data-toggle': 'modal', 'data-target': '#second-form-modal' },
-                                '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F'
+                                'div',
+                                { className: 'col-md-4 p_training_first_form_container' },
+                                React.createElement(
+                                    'h3',
+                                    { className: 'p_training_open_form_name' },
+                                    childrenGroupCoach[0].name_who_is_trained
+                                ),
+                                React.createElement('img', { src: '../img/child.jpg', height: '300px', width: '300px', alt: '', className: 'p_training_open_first_form_img' }),
+                                React.createElement(
+                                    'p',
+                                    { className: 'p_training_open_first_form_button_container' },
+                                    React.createElement(
+                                        'button',
+                                        { className: 'p_training_button btn btn-primary', 'data-toggle': 'modal', 'data-target': '#first-form-modal' },
+                                        '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F'
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'col-md-4 p_training_second_form_container' },
+                                React.createElement(
+                                    'h3',
+                                    { className: 'p_training_open_form_name' },
+                                    teenagerGroupCoach[0].name_who_is_trained
+                                ),
+                                React.createElement('img', { src: '../img/tin.jpg', height: '300px', width: '300px', alt: '', className: 'p_training_open_second_form_img' }),
+                                React.createElement(
+                                    'p',
+                                    { className: 'p_training_open_second_form_button_container' },
+                                    React.createElement(
+                                        'button',
+                                        { className: 'p_training_button btn btn-primary', 'data-toggle': 'modal', 'data-target': '#second-form-modal' },
+                                        '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F'
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'col-md-4 p_training_third_form_container' },
+                                React.createElement(
+                                    'h3',
+                                    { className: 'p_training_open_form_name' },
+                                    adultGroupCoach[0].name_who_is_trained
+                                ),
+                                React.createElement('img', { src: '../img/adult.jpg', height: '300px', width: '300px', alt: '', className: 'p_training_open_third_form_img' }),
+                                React.createElement(
+                                    'p',
+                                    { className: 'p_training_open_third_form_button_container' },
+                                    React.createElement(
+                                        'button',
+                                        { className: 'p_training_button btn btn-primary', 'data-toggle': 'modal', 'data-target': '#third-form-modal' },
+                                        '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F'
+                                    )
+                                )
                             )
                         )
                     ),
-                    React.createElement(
-                        'div',
-                        { className: 'col-md-4 p_training_third_form_container' },
-                        React.createElement(
-                            'h3',
-                            { className: 'p_training_open_form_name' },
-                            adultGroupCoach[0].name_who_is_trained
-                        ),
-                        React.createElement('img', { src: '../img/adult.jpg', height: '300px', width: '300px', alt: '', className: 'p_training_open_third_form_img' }),
-                        React.createElement(
-                            'p',
-                            { className: 'p_training_open_third_form_button_container' },
-                            React.createElement(
-                                'button',
-                                { className: 'p_training_button btn btn-primary', 'data-toggle': 'modal', 'data-target': '#third-form-modal' },
-                                '\u0417\u0430\u043F\u0438\u0441\u0430\u0442\u0438\u0441\u044F'
-                            )
-                        )
-                    )
+                    React.createElement('span', null)
                 )
             ),
             React.createElement(
@@ -321,17 +348,30 @@ class PayTraining extends React.Component {
                                     React.createElement(
                                         'p',
                                         { className: 'form_check_coach_name' },
-                                        '\u041E\u0431\u0435\u0440\u0456\u0442\u044C \u0442\u0440\u0435\u043D\u0435\u0440\u0430',
+                                        '\u041E\u0431\u0435\u0440\u0456\u0442\u044C \u0442\u0440\u0435\u043D\u0435\u0440\u0430 ',
                                         React.createElement(
                                             'span',
                                             { className: 'needs' },
                                             '*'
                                         )
                                     ),
-                                    React.createElement('input', { type: 'text', defaultValue: childrenGroupCoach[0].name, readOnly: true, id: 'select1', onFocus: this.openSelectList, className: 'form-control form-control-2' }),
                                     React.createElement(
                                         'div',
                                         { className: 'list_container' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'input-group' },
+                                            React.createElement('input', { type: 'text', defaultValue: childrenGroupCoach[0].name, readOnly: true, id: 'select1', className: 'choice-coach-form form-control form-control-2' }),
+                                            React.createElement(
+                                                'span',
+                                                { className: 'input-group-btn' },
+                                                React.createElement(
+                                                    'button',
+                                                    { onClick: this.openSelectList, className: 'open-list-but btn btn-default', type: 'button' },
+                                                    '\u25BC'
+                                                )
+                                            )
+                                        ),
                                         React.createElement(
                                             'ul',
                                             { className: 'coach_list ' },
@@ -348,7 +388,7 @@ class PayTraining extends React.Component {
                                         this.state.selectedCoachChild !== 0 ? React.createElement(
                                             'span',
                                             null,
-                                            '\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u043C\u0456\u0441\u0446\u044C: ',
+                                            '\u0417\u0430\u043B\u0438\u0448\u0438\u043B\u043E\u0441\u044C \u043C\u0456\u0441\u0446\u044C: ',
                                             this.state.selectedCoachChild
                                         ) : React.createElement('span', null)
                                     ),
@@ -414,10 +454,23 @@ class PayTraining extends React.Component {
                                             '*'
                                         )
                                     ),
-                                    React.createElement('input', { type: 'text', defaultValue: teenagerGroupCoach[0].name, readOnly: true, id: 'select2', onFocus: this.openSelectList, className: 'form-control  form-control-2' }),
                                     React.createElement(
                                         'div',
                                         { className: 'list_container' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'input-group' },
+                                            React.createElement('input', { type: 'text', defaultValue: teenagerGroupCoach[0].name, readOnly: true, id: 'select2', className: 'choice-coach-form form-control form-control-2' }),
+                                            React.createElement(
+                                                'span',
+                                                { className: 'input-group-btn' },
+                                                React.createElement(
+                                                    'button',
+                                                    { onClick: this.openSelectList, className: 'open-list-but btn btn-default', type: 'button' },
+                                                    '\u25BC'
+                                                )
+                                            )
+                                        ),
                                         React.createElement(
                                             'ul',
                                             { className: 'coach_list ' },
@@ -434,7 +487,7 @@ class PayTraining extends React.Component {
                                         this.state.selectedCoachTin !== 0 ? React.createElement(
                                             'span',
                                             null,
-                                            '\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u043C\u0456\u0441\u0446\u044C: ',
+                                            '\u0417\u0430\u043B\u0438\u0448\u0438\u043B\u043E\u0441\u044C \u043C\u0456\u0441\u0446\u044C: ',
                                             this.state.selectedCoachTin
                                         ) : React.createElement('span', null)
                                     ),
@@ -500,10 +553,23 @@ class PayTraining extends React.Component {
                                             '*'
                                         )
                                     ),
-                                    React.createElement('input', { type: 'text', defaultValue: adultGroupCoach[0].name, readOnly: true, id: 'select3', onFocus: this.openSelectList, className: 'form-control  form-control-2' }),
                                     React.createElement(
                                         'div',
                                         { className: 'list_container' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'input-group' },
+                                            React.createElement('input', { type: 'text', defaultValue: adultGroupCoach[0].name, readOnly: true, id: 'select3', className: 'choice-coach-form form-control form-control-2' }),
+                                            React.createElement(
+                                                'span',
+                                                { className: 'input-group-btn' },
+                                                React.createElement(
+                                                    'button',
+                                                    { onClick: this.openSelectList, className: 'open-list-but btn btn-default', type: 'button' },
+                                                    '\u25BC'
+                                                )
+                                            )
+                                        ),
                                         React.createElement(
                                             'ul',
                                             { className: 'coach_list ' },
@@ -520,7 +586,7 @@ class PayTraining extends React.Component {
                                         this.state.selectedCoachAdult !== 0 ? React.createElement(
                                             'span',
                                             null,
-                                            '\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u043C\u0456\u0441\u0446\u044C: ',
+                                            '\u0417\u0430\u043B\u0438\u0448\u0438\u043B\u043E\u0441\u044C \u043C\u0456\u0441\u0446\u044C: ',
                                             this.state.selectedCoachAdult
                                         ) : React.createElement('span', null)
                                     ),
@@ -550,8 +616,7 @@ class PayTraining extends React.Component {
                         )
                     )
                 )
-            ),
-            React.createElement('span', null)
+            )
         );
     }
 }

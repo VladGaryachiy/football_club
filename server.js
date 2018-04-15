@@ -12,6 +12,7 @@ server.use(bodyParser.json());
 
 
 server.get('/CoachesData',require('./controllers/allCoaches.js'));
+server.get('/ClubVideos',require('./controllers/allVideos.js'));
 server.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public/index.html'))
 });
@@ -19,5 +20,6 @@ server.get('*', (req, res) => {
 
 
 server.post('/formPayTrainingExportData',require('./controllers/visitedFootbalClub.js'));
+server.post('/send-user-message',require('./controllers/message.js'));
 
 server.listen(6100,'localhost');

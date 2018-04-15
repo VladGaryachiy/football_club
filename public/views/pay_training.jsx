@@ -2,6 +2,9 @@ let React = require('react');
 let ReactDOM = require('react-dom');
 
 
+let Tween = require('rc-tween-one/lib/TweenOne');
+let ScrollOverPack = require('rc-scroll-anim/lib/ScrollOverPack');
+
 let childrenGroupCoach = [];
 let teenagerGroupCoach = [];
 let adultGroupCoach = [];
@@ -80,25 +83,33 @@ class PayTraining extends React.Component{
 
         /*-----client info------*/
 
-        let name = e.currentTarget[1].value;
-        let surname = e.currentTarget[2].value;
-        let age = e.currentTarget[3].value;
-        let city = e.currentTarget[4].value;
-        let phone = e.currentTarget[5].value;
-        let email = e.currentTarget[6].value;
+        let name = e.currentTarget[2].value;
+        let surname = e.currentTarget[3].value;
+        let age = e.currentTarget[4].value;
+        let city = e.currentTarget[5].value;
+        let phone = e.currentTarget[6].value;
+        let email = e.currentTarget[7].value;
 
 
         let searchId = AllCoaches[0].filter(item =>{
             return item.name === nameCoach;
         });
         let id_coach = searchId[0].coach_id;
+        let name_group = searchId[0].name_who_is_trained;
 
         let result = Number(searchId[0].amount_places_in_group - 1);
 
         let exportData = {
             'id':               id_coach,
+            'amount_places':    result,
+            'coach_name':       nameCoach,
+            'name_group':       name_group,
             'name':             name,
-            'amount_places':    result
+            'surname':          surname,
+            'age' :             age,
+            'city':             city,
+            'phone':            phone,
+            'email':            email
         };
 
         if(result < 0){
@@ -164,7 +175,7 @@ class PayTraining extends React.Component{
 
                         $('.result-container').removeClass('error');
                         $('.result-container').text('');
-                    },10000)
+                    },4000)
                 }
             });
 
@@ -229,201 +240,234 @@ class PayTraining extends React.Component{
     }
 
     openSelectList(e){
-        let selectName = e.currentTarget.nextSibling.children[0].className;
+        let selectName = e.currentTarget.parentElement.parentElement.nextSibling.attributes[0].value;
         $('.'+selectName).css('display','block')
 
     }
 
     render() {
         return (
-            <div className="pay_training_main_container">
-                <h1 className="pay_training-main-name">Записатися на тренування</h1>
-                <h2 className="pay_training_check_name">Щоб потрапити на тренування в команду заповніть
-                    форму яка відповідає вашій категорії</h2>
+           <React.Fragment>
+               <Tween
+                   animation={{
+                       type: 'from',
+                       ease: 'easeOutQuart',
+                       opacity: 0 ,
+                       translateY: '300px',
+                       duration:900,
+                   }}>
+                   <div className="pay_training_main_container">
+                       <h1 className="pay_training-main-name">Записатися на тренування</h1>
+                       <h2 className="pay_training_check_name">Щоб потрапити на тренування в команду заповніть
+                           форму яка відповідає вашій категорії</h2>
 
-                <div className="pay_training_open_forms_main_container container ">
-                    <div className="row">
-                        <div className="col-md-4 p_training_first_form_container">
-                            <h3 className="p_training_open_form_name">{childrenGroupCoach[0].name_who_is_trained}</h3>
-                            <img src="../img/child.jpg" height="300px" width="300px" alt="" className="p_training_open_first_form_img"/>
-                            <p className="p_training_open_first_form_button_container">
-                                <button className="p_training_button btn btn-primary" data-toggle="modal" data-target="#first-form-modal">Записатися</button>
-                            </p>
-                        </div>
-                        <div className="col-md-4 p_training_second_form_container">
-                            <h3 className="p_training_open_form_name">{teenagerGroupCoach[0].name_who_is_trained}</h3>
-                            <img src="../img/tin.jpg" height="300px" width="300px" alt="" className="p_training_open_second_form_img"/>
-                            <p className="p_training_open_second_form_button_container">
-                                <button className="p_training_button btn btn-primary" data-toggle="modal" data-target="#second-form-modal">Записатися</button>
-                            </p>
-                        </div>
-                        <div className="col-md-4 p_training_third_form_container">
-                            <h3 className="p_training_open_form_name">{adultGroupCoach[0].name_who_is_trained}</h3>
-                            <img src="../img/adult.jpg" height="300px" width="300px" alt="" className="p_training_open_third_form_img"/>
-                            <p className="p_training_open_third_form_button_container">
-                                <button className="p_training_button btn btn-primary" data-toggle="modal" data-target="#third-form-modal">Записатися</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/*---First modal ---*/}
-
-                <div className="modal fade" id="first-form-modal" tabIndex="-1" role="dialog" aria-labelledby="formModalLabel">
-                    <div className="modal-dialog">
-                        <div id="modal"  className="modal-content container pay_training_main_forms_container ">
-                            <div className="row">
-                                <div className="col-md-12 col-sm-12 col-xs-12 ">
-                                    <h1 className="age-category">Вікова категорія: {childrenGroupCoach[0].name_who_is_trained}</h1>
-                                    <div className="result-container"></div>
-                                    <form onSubmit={this.submitTrainingForm} action="/formPayTrainingExportData" method="post" className="modal-go-to-training-form">
-
-                                        <p className="form_check_coach_name">
-                                            Оберіть тренера<span className="needs">*</span>
-                                        </p>
-                                        <input type="text" defaultValue={childrenGroupCoach[0].name} readOnly={true}  id="select1" onFocus={this.openSelectList} className="form-control form-control-2"/>
-                                        <div className="list_container">
-                                            <ul className="coach_list ">
-                                                {
-                                                    childrenGroupCoach.map((item,i)=>
-                                                        <li key={i} onClick={this.changeCoachChild} className=" form-control element-select-list">{item.name}</li>
-                                                    )
-                                                }
-                                            </ul>
-                                        </div>
-                                        <p className="amount_places_in_group">
-                                            {
-                                                this.state.selectedCoachChild !== 0 ?
-                                                    <span>Кількість місць: {this.state.selectedCoachChild}</span>
-                                                    :
-                                                    <span></span>
-                                            }
-                                        </p>
-
-                                        <input type="text" name="name" className="form-control  form-control-2" placeholder="Ім'я"/>
-                                        <input type="text" name="surname" className="form-control  form-control-2" placeholder="Прізвище"/>
-                                        <input type="text" name="age" className="form-control  form-control-2" placeholder="Вік"/>
-                                        <input type="text" name="city" className="form-control  form-control-2" placeholder="Місто"/>
-                                        <input type="text" name="phone" className="form-control  form-control-2" placeholder="Телефон"/>
-                                        <input type="text" name="email" className="form-control  form-control-2" placeholder="Email"/>
-
-                                        <div className="button-group">
-                                            <button type="submit" className="btn btn-success" >Надіслати</button>
-                                            <button data-name-close-list="coach_list" type="button" className="btn btn-default " data-dismiss="modal" onClick={this.clearState}>Вийти</button> {/*clear state*/}
-                                        </div>
-                                    </form>
+                       <div className="pay_training_open_forms_main_container container ">
+                           <div className="row">
+                               <div className="col-md-4 p_training_first_form_container">
+                                   <h3 className="p_training_open_form_name">{childrenGroupCoach[0].name_who_is_trained}</h3>
+                                   <img src="../img/child.jpg" height="300px" width="300px" alt="" className="p_training_open_first_form_img"/>
+                                   <p className="p_training_open_first_form_button_container">
+                                       <button className="p_training_button btn btn-primary" data-toggle="modal" data-target="#first-form-modal">Записатися</button>
+                                   </p>
+                               </div>
+                               <div className="col-md-4 p_training_second_form_container">
+                                   <h3 className="p_training_open_form_name">{teenagerGroupCoach[0].name_who_is_trained}</h3>
+                                   <img src="../img/tin.jpg" height="300px" width="300px" alt="" className="p_training_open_second_form_img"/>
+                                   <p className="p_training_open_second_form_button_container">
+                                       <button className="p_training_button btn btn-primary" data-toggle="modal" data-target="#second-form-modal">Записатися</button>
+                                   </p>
+                               </div>
+                               <div className="col-md-4 p_training_third_form_container">
+                                   <h3 className="p_training_open_form_name">{adultGroupCoach[0].name_who_is_trained}</h3>
+                                   <img src="../img/adult.jpg" height="300px" width="300px" alt="" className="p_training_open_third_form_img"/>
+                                   <p className="p_training_open_third_form_button_container">
+                                       <button className="p_training_button btn btn-primary" data-toggle="modal" data-target="#third-form-modal">Записатися</button>
+                                   </p>
+                               </div>
+                           </div>
+                       </div>
+                       <span></span>
+                   </div>
+               </Tween>
 
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               {/*---First modal ---*/}
 
-                {/*---Second modal---*/}
+               <div className="modal fade" id="first-form-modal" tabIndex="-1" role="dialog" aria-labelledby="formModalLabel">
+                   <div className="modal-dialog">
+                       <div id="modal"  className="modal-content container pay_training_main_forms_container ">
+                           <div className="row">
+                               <div className="col-md-12 col-sm-12 col-xs-12 ">
+                                   <h1 className="age-category">Вікова категорія: {childrenGroupCoach[0].name_who_is_trained}</h1>
+                                   <div className="result-container"></div>
+                                   <form onSubmit={this.submitTrainingForm} action="/formPayTrainingExportData" method="post" className="modal-go-to-training-form">
 
-                <div className="modal fade" id="second-form-modal" tabIndex="-1" role="dialog" aria-labelledby="formModalLabel">
-                    <div className="modal-dialog">
-                        <div className="modal-content container pay_training_main_forms_container ">
-                            <div className="row">
-                                <div className="col-md-12 col-sm-12 col-xs-12 ">
-                                    <h1 className="age-category">Вікова категорія: {teenagerGroupCoach[0].name_who_is_trained}</h1>
-                                    <div className="result-container"></div>
-                                    <form onSubmit={this.submitTrainingForm} action="/formPayTrainingExportData" method="post" className="modal-go-to-training-form">
-                                        <p className="form_check_coach_name">
-                                            Оберіть тренера<span className="needs">*</span>
-                                        </p>
-                                        <input type="text" defaultValue={teenagerGroupCoach[0].name} readOnly={true}  id="select2" onFocus={this.openSelectList} className="form-control  form-control-2"/>
-                                        <div className="list_container">
-                                            <ul className="coach_list ">
-                                                {
-                                                    teenagerGroupCoach.map((item,i)=>
-                                                        <li key={i} onClick={this.changeCoachTin} className=" form-control element-select-list">{item.name}</li>
-                                                    )
-                                                }
-                                            </ul>
-                                        </div>
-                                        <p className="amount_places_in_group">
-                                            {
-                                                this.state.selectedCoachTin !== 0 ?
-                                                    <span>Кількість місць: {this.state.selectedCoachTin}</span>
-                                                    :
-                                                    <span></span>
-                                            }
-                                        </p>
-
-                                        <input type="text" name="name" className="form-control  form-control-2" placeholder="Ім'я"/>
-                                        <input type="text" name="surname" className="form-control  form-control-2" placeholder="Прізвище"/>
-                                        <input type="text" name="age" className="form-control  form-control-2" placeholder="Вік"/>
-                                        <input type="text" name="city" className="form-control  form-control-2" placeholder="Місто"/>
-                                        <input type="text" name="phone" className="form-control  form-control-2" placeholder="Телефон"/>
-                                        <input type="text" name="email" className="form-control  form-control-2" placeholder="Email"/>
-
-                                        <div className="button-group">
-                                            <button type="submit" className="btn btn-success" >Надіслати</button>
-                                            <button data-name-close-list="coach_list" type="button" className="btn btn-default " data-dismiss="modal" onClick={this.clearState}>Вийти</button> {/*clear state*/}
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/*---Third modal---*/}
-
-                <div className="modal fade" id="third-form-modal" tabIndex="-1" role="dialog" aria-labelledby="formModalLabel">
-                    <div className="modal-dialog">
-                        <div className="modal-content container pay_training_main_forms_container ">
-                            <div className="row">
-                                <div className="col-md-12 col-sm-12 col-xs-12 ">
-                                    <h1 className="age-category">Вікова категорія: {adultGroupCoach[0].name_who_is_trained}</h1>
-                                    <div className="result-container"></div>
-                                    <form onSubmit={this.submitTrainingForm} action="/formPayTrainingExportData" method="post" className="modal-go-to-training-form">
-                                        <p className="form_check_coach_name">
-                                            Оберіть тренера <span className="needs">*</span>
-                                        </p>
-                                        <input type="text" defaultValue={adultGroupCoach[0].name} readOnly={true}  id="select3" onFocus={this.openSelectList} className="form-control  form-control-2"/>
-                                        <div className="list_container">
-                                            <ul className="coach_list ">
-                                                {
-                                                    adultGroupCoach.map((item,i)=>
-                                                        <li key={i} onClick={this.changeCoachAdult} className=" form-control element-select-list">{item.name}</li>
-                                                    )
-                                                }
-                                            </ul>
-                                        </div>
-                                        <p className="amount_places_in_group">
-                                            {
-                                                this.state.selectedCoachAdult !== 0 ?
-                                                    <span>Кількість місць: {this.state.selectedCoachAdult}</span>
-                                                    :
-                                                    <span></span>
-                                            }
-                                        </p>
-
-                                        <input type="text" name="name" className="form-control  form-control-2" placeholder="Ім'я"/>
-                                        <input type="text" name="surname" className="form-control  form-control-2" placeholder="Прізвище"/>
-                                        <input type="text" name="age" className="form-control  form-control-2" placeholder="Вік"/>
-                                        <input type="text" name="city" className="form-control  form-control-2" placeholder="Місто"/>
-                                        <input type="text" name="phone" className="form-control  form-control-2" placeholder="Телефон"/>
-                                        <input type="text" name="email" className="form-control  form-control-2" placeholder="Email"/>
+                                       <p className="form_check_coach_name">
+                                           Оберіть тренера <span className="needs">*</span>
+                                       </p>
 
 
-                                        <div className="button-group">
-                                            <button type="submit" className="btn btn-success" >Надіслати</button>
-                                            <button data-name-close-list="coach_list" type="button" className="btn btn-default " data-dismiss="modal" onClick={this.clearState}>Вийти</button> {/*clear state*/}
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span></span>
-            </div>
+                                       <div className="list_container">
+                                           <div className="input-group">
+                                               <input type="text" defaultValue={childrenGroupCoach[0].name } readOnly={true}  id="select1"  className="choice-coach-form form-control form-control-2"/>
+                                               <span className="input-group-btn">
+                                                <button onClick={this.openSelectList} className="open-list-but btn btn-default" type="button">&#9660;</button>
+                                              </span>
+                                           </div>
+                                           <ul className="coach_list ">
+                                               {
+                                                   childrenGroupCoach.map((item,i)=>
+                                                       <li key={i} onClick={this.changeCoachChild} className=" form-control element-select-list">
+                                                           {/*<div className="face-coach"></div>*/}
+                                                           {item.name}
+                                                       </li>
+                                                   )
+                                               }
+                                           </ul>
+                                       </div>
+                                       <p className="amount_places_in_group">
+                                           {
+                                               this.state.selectedCoachChild !== 0 ?
+                                                   <span>Залишилось місць: {this.state.selectedCoachChild}</span>
+                                                   :
+                                                   <span></span>
+                                           }
+                                       </p>
 
+                                       <input type="text" name="name" className="form-control  form-control-2" placeholder="Ім'я"/>
+                                       <input type="text" name="surname" className="form-control  form-control-2" placeholder="Прізвище"/>
+                                       <input type="text" name="age" className="form-control  form-control-2" placeholder="Вік"/>
+                                       <input type="text" name="city" className="form-control  form-control-2" placeholder="Місто"/>
+                                       <input type="text" name="phone" className="form-control  form-control-2" placeholder="Телефон"/>
+                                       <input type="text" name="email" className="form-control  form-control-2" placeholder="Email"/>
+
+                                       <div className="button-group">
+                                           <button type="submit" className="btn btn-success" >Надіслати</button>
+                                           <button data-name-close-list="coach_list" type="button" className="btn btn-default " data-dismiss="modal" onClick={this.clearState}>Вийти</button> {/*clear state*/}
+                                       </div>
+                                   </form>
+
+
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+               {/*---Second modal---*/}
+
+               <div className="modal fade" id="second-form-modal" tabIndex="-1" role="dialog" aria-labelledby="formModalLabel">
+                   <div className="modal-dialog">
+                       <div className="modal-content container pay_training_main_forms_container ">
+                           <div className="row">
+                               <div className="col-md-12 col-sm-12 col-xs-12 ">
+                                   <h1 className="age-category">Вікова категорія: {teenagerGroupCoach[0].name_who_is_trained}</h1>
+                                   <div className="result-container"></div>
+                                   <form onSubmit={this.submitTrainingForm} action="/formPayTrainingExportData" method="post" className="modal-go-to-training-form">
+                                       <p className="form_check_coach_name">
+                                           Оберіть тренера<span className="needs">*</span>
+                                       </p>
+                                       <div className="list_container">
+                                           <div className="input-group">
+                                               <input type="text" defaultValue={teenagerGroupCoach[0].name } readOnly={true}  id="select2"  className="choice-coach-form form-control form-control-2"/>
+                                               <span className="input-group-btn">
+                                                <button onClick={this.openSelectList} className="open-list-but btn btn-default" type="button">&#9660;</button>
+                                              </span>
+                                           </div>
+                                           <ul className="coach_list ">
+                                               {
+                                                   teenagerGroupCoach.map((item,i)=>
+                                                       <li key={i} onClick={this.changeCoachTin} className=" form-control element-select-list">{item.name}</li>
+                                                   )
+                                               }
+                                           </ul>
+                                       </div>
+                                       <p className="amount_places_in_group">
+                                           {
+                                               this.state.selectedCoachTin !== 0 ?
+                                                   <span>Залишилось місць: {this.state.selectedCoachTin}</span>
+                                                   :
+                                                   <span></span>
+                                           }
+                                       </p>
+
+                                       <input type="text" name="name" className="form-control  form-control-2" placeholder="Ім'я"/>
+                                       <input type="text" name="surname" className="form-control  form-control-2" placeholder="Прізвище"/>
+                                       <input type="text" name="age" className="form-control  form-control-2" placeholder="Вік"/>
+                                       <input type="text" name="city" className="form-control  form-control-2" placeholder="Місто"/>
+                                       <input type="text" name="phone" className="form-control  form-control-2" placeholder="Телефон"/>
+                                       <input type="text" name="email" className="form-control  form-control-2" placeholder="Email"/>
+
+                                       <div className="button-group">
+                                           <button type="submit" className="btn btn-success" >Надіслати</button>
+                                           <button data-name-close-list="coach_list" type="button" className="btn btn-default " data-dismiss="modal" onClick={this.clearState}>Вийти</button> {/*clear state*/}
+                                       </div>
+                                   </form>
+
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+               {/*---Third modal---*/}
+
+               <div className="modal fade" id="third-form-modal" tabIndex="-1" role="dialog" aria-labelledby="formModalLabel">
+                   <div className="modal-dialog">
+                       <div className="modal-content container pay_training_main_forms_container ">
+                           <div className="row">
+                               <div className="col-md-12 col-sm-12 col-xs-12 ">
+                                   <h1 className="age-category">Вікова категорія: {adultGroupCoach[0].name_who_is_trained}</h1>
+                                   <div className="result-container"></div>
+                                   <form onSubmit={this.submitTrainingForm} action="/formPayTrainingExportData" method="post" className="modal-go-to-training-form">
+                                       <p className="form_check_coach_name">
+                                           Оберіть тренера <span className="needs">*</span>
+                                       </p>
+                                       <div className="list_container">
+                                           <div className="input-group">
+                                               <input type="text" defaultValue={adultGroupCoach[0].name } readOnly={true}  id="select3"  className="choice-coach-form form-control form-control-2"/>
+                                               <span className="input-group-btn">
+                                                <button onClick={this.openSelectList} className="open-list-but btn btn-default" type="button">&#9660;</button>
+                                              </span>
+                                           </div>
+                                           <ul className="coach_list ">
+                                               {
+                                                   adultGroupCoach.map((item,i)=>
+                                                       <li key={i} onClick={this.changeCoachAdult} className=" form-control element-select-list">{item.name}</li>
+                                                   )
+                                               }
+                                           </ul>
+                                       </div>
+                                       <p className="amount_places_in_group">
+                                           {
+                                               this.state.selectedCoachAdult !== 0 ?
+                                                   <span>Залишилось місць: {this.state.selectedCoachAdult}</span>
+                                                   :
+                                                   <span></span>
+                                           }
+                                       </p>
+
+                                       <input type="text" name="name" className="form-control  form-control-2" placeholder="Ім'я"/>
+                                       <input type="text" name="surname" className="form-control  form-control-2" placeholder="Прізвище"/>
+                                       <input type="text" name="age" className="form-control  form-control-2" placeholder="Вік"/>
+                                       <input type="text" name="city" className="form-control  form-control-2" placeholder="Місто"/>
+                                       <input type="text" name="phone" className="form-control  form-control-2" placeholder="Телефон"/>
+                                       <input type="text" name="email" className="form-control  form-control-2" placeholder="Email"/>
+
+
+                                       <div className="button-group">
+                                           <button type="submit" className="btn btn-success" >Надіслати</button>
+                                           <button data-name-close-list="coach_list" type="button" className="btn btn-default " data-dismiss="modal" onClick={this.clearState}>Вийти</button> {/*clear state*/}
+                                       </div>
+                                   </form>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+
+    </React.Fragment>
         )
     }
 }

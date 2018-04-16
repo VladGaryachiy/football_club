@@ -1,0 +1,92 @@
+.home-main-name{
+    margin-bottom: 5%;
+    background-color: rgba(150, 150, 150, 0.89);
+    padding: 10px;
+    color: white;
+    font-family: Andale Mono, monospace;
+}
+
+.school-logo-container{
+  /*  height: 500px;
+    background: url('../img/test-back-logo.jpg')  ;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;*/
+}
+
+.about-school-main-container{
+
+}
+.about-school-main-name{
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+    border-bottom: 10px solid #074da8;
+    width: 600px;
+    padding-left: 50px;
+    color: black;
+}
+.about-school{
+
+}
+.about-school-text{
+    font-size: 20px;
+    text-align: justify;
+    padding-left: 42px;
+    color: black;
+}
+.home-main-logo{
+    height: 430px;
+    width: 450px;
+}
+.why-me-school-main-name{
+    font-size: 30px;
+    margin-bottom: 40px;
+    text-align: right;
+    border-bottom: 10px solid #074da8;
+    width: 600px;
+    padding-right: 50px;
+    margin-top: 50px;
+    margin-left:-18px;
+    color: black;
+
+    /* margin-bottom: 30px; */
+}
+
+.features-img{
+    height: 165px;
+    width: 250px;
+}
+.our-main-mission{
+    font-size: 20px;
+    margin-top: -20px;
+    margin-bottom: 40px;
+    color: black;
+}
+.name-features{
+    font-weight: 700;
+    margin-top: 15px;
+    font-size: 17px;
+    border-bottom: 1px solid #cacacc;
+    padding-bottom: 4px;
+    color: black;
+}
+.about-features{
+    font-size: 15px;
+}
+.features-container-img{
+    background: #dedede;
+    /* padding: 2px; */
+    /* padding: 2px 2px 2px 2px; */
+    border: 1px solid #c5c5c5;
+    /* height: 185px; */
+    /* width: 270px; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+.school-bold-name{
+    color:#074da8;
+    font-weight: 700;
+
+}

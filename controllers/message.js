@@ -6,8 +6,8 @@ let nodemailer = require("nodemailer");
 let smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "Oleglarin123@gmail.com",
-        pass: "190420qq"
+        user: "vladosikhot@gmail.com",
+        pass: "popaaa12345"
     }
 });
 
@@ -44,7 +44,7 @@ module.exports = function (req,res) {
         res.status(200).json({success:success});
 
         let mailOptions={
-            to : "Oleglarin123@gmail.com",
+            to : "vladosikhot@gmail.com",
             subject : "Повідомлення від клієнта",
             text : message
         };

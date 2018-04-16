@@ -198,7 +198,7 @@ class PayTraining extends React.Component{
     }
 
     changeCoachChild(e){
-        let coachName = e.currentTarget.innerHTML; //selected coach
+        let coachName = e.currentTarget.childNodes[1].innerHTML; //selected coach
         let places = AllCoaches[0].filter(item =>{
             return item.name === coachName;
         });
@@ -211,7 +211,7 @@ class PayTraining extends React.Component{
         $('.coach_list' ).css('display','none');
     }
     changeCoachTin(e){
-        let coachName = e.currentTarget.innerHTML; //selected coach
+        let coachName = e.currentTarget.childNodes[1].innerHTML; //selected coach
         let places = AllCoaches[0].filter(item =>{
             return item.name === coachName;
         });
@@ -225,7 +225,7 @@ class PayTraining extends React.Component{
         $('.coach_list' ).css('display','none');
     }
     changeCoachAdult(e){
-        let coachName = e.currentTarget.innerHTML; //selected coach
+        let coachName = e.currentTarget.childNodes[1].innerHTML; //selected coach
         let places = AllCoaches[0].filter(item =>{
             return item.name === coachName;
         });
@@ -318,8 +318,12 @@ class PayTraining extends React.Component{
                                                {
                                                    childrenGroupCoach.map((item,i)=>
                                                        <li key={i} onClick={this.changeCoachChild} className=" form-control element-select-list">
-                                                           {/*<div className="face-coach"></div>*/}
-                                                           {item.name}
+                                                           <div className="face-coach">
+                                                               <img src={item.face_coach} alt="" className={"img-face-coach face"+item.coach_id}/>
+                                                           </div>
+                                                           <div className="list-coach-name-container">
+                                                               {item.name}
+                                                           </div>
                                                        </li>
                                                    )
                                                }
@@ -377,7 +381,14 @@ class PayTraining extends React.Component{
                                            <ul className="coach_list ">
                                                {
                                                    teenagerGroupCoach.map((item,i)=>
-                                                       <li key={i} onClick={this.changeCoachTin} className=" form-control element-select-list">{item.name}</li>
+                                                       <li key={i} onClick={this.changeCoachTin} className=" form-control element-select-list">
+                                                           <div className="face-coach">
+                                                               <img src={item.face_coach} alt="" className={"img-face-coach face"+item.coach_id}/>
+                                                           </div>
+                                                           <div className="list-coach-name-container">
+                                                               {item.name}
+                                                           </div>
+                                                       </li>
                                                    )
                                                }
                                            </ul>
@@ -433,7 +444,14 @@ class PayTraining extends React.Component{
                                            <ul className="coach_list ">
                                                {
                                                    adultGroupCoach.map((item,i)=>
-                                                       <li key={i} onClick={this.changeCoachAdult} className=" form-control element-select-list">{item.name}</li>
+                                                       <li key={i} onClick={this.changeCoachAdult} className=" form-control element-select-list">
+                                                           <div className="face-coach">
+                                                               <img src={item.face_coach} alt="" className={"img-face-coach face"+item.coach_id}/>
+                                                           </div>
+                                                           <div className="list-coach-name-container">
+                                                               {item.name}
+                                                           </div>
+                                                       </li>
                                                    )
                                                }
                                            </ul>

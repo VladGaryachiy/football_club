@@ -7,7 +7,7 @@
 }
 
 .element-video{
-    border: 1px solid #355ae8;
+    border: 2px solid #074da8;
     margin-top: 20px;
     padding-bottom: 30px;
     /* background: #ffffff; */
@@ -15,13 +15,15 @@
 .name-video{
     font-size: 18px;
     margin-bottom: 15px;
-    background: #355ae8;
+    background: #074da8;
     padding-top: 20px;
     padding-bottom: 20px;
     /* height: 50px; */
     color: white;
     margin-top: 0;
 }
-.video-box{
 
+.video-box {
+    padding-top: 20px;
 }
+

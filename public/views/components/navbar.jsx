@@ -41,6 +41,9 @@ class Navbar extends React.Component{
     render(){
         return(
             <div className="navbar-container-main">
+                <div className="container-logo">
+                    <img src="../../img/logo-main.png" alt="" className="logo-main"/>
+                </div>
                <table  className="navbar-table">
                    <tbody className="menu-links-container">
                     <tr>

@@ -18,7 +18,7 @@
     padding: 0;
 }
 .element-select-list{
-
+    background-color: #eeeeee;
     padding: 5px;
     z-index: 99999;
     list-style-type: none;
@@ -27,7 +27,9 @@
     margin-top: 1px;
     border-radius: 0;
     margin-bottom: 2px;
-    height: 30px;
+    height: 72px;
+    border-radius: 3px;
+    color: #337ab7;
 
 }
 .element-select-list:hover{
@@ -120,4 +122,40 @@
 }
 .form_check_coach_name{
  margin-top: 30px;
+}
+
+.face-coach{
+    float:left;
+    display:inline-block;
+    height: 60px;
+    width: 60px;
+    background: white;
+    border-radius: 50%;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+.face-coach > .face3{
+    width:60px;
+}
+.face-coach > .face4{
+    width:60px;
+    height:60px;
+    margin-top: 4px;
+}
+.img-face-coach{
+    height: 55px;
+    width: 55px;
+    margin-top: 6px;
+}
+.list-coach-name-container{
+    width: 200px;
+    /* float: right; */
+    height: 40px;
+    padding-right: 50px;
+    position: relative;
+    margin-left: 35%;
+    font-size: 20px;
+    padding-top: 16px;
+
 }

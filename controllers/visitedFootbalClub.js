@@ -4,13 +4,13 @@ let pg = require('pg');
 let connect = "postgres://eduonix:1111@localhost/football";
 
 
-/*let smtpTransport = nodemailer.createTransport({
+let smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "Oleglarin123@gmail.com",
-        pass: "190420qq"
+        user: "vladosikhot@gmail.com",
+        pass: "popaaa12345"
     }
-});*/
+});
 
 module.exports = function (req,res) {
     req;
@@ -177,9 +177,9 @@ module.exports = function (req,res) {
                 [amount_places, id]);
         });
 
-        /*let message = "Доброго дня " + name + ' ' + surname +" !\nВи подали анкету для участі в тренуваннях в Київський футбольній школі ДЮСШ 15" +
+        let message = "Доброго дня " + name + ' ' + surname +" !\nВи подали анкету для участі в тренуваннях в Київський футбольній школі ДЮСШ 15" +
             "Група : " + name_group +'\nТренер: ' + coach_name+'\n'+name+' ми завпрошуємо вас на перше тренування в понеділок о 18-00, ми знаходимося ' +
-            'за адресою м.Київ -  вул. Михайла Грушевського 15 \nМи чекаємо вас!)';
+            'за адресою м.Київ -  вул. Якубовського \nМи чекаємо вас!)';
         let mailOptions={
             to : email,
             subject : "Запрошуємо на тренування",
@@ -194,7 +194,7 @@ module.exports = function (req,res) {
                 console.log("Message sent: " + response.message);
                 res.end("sent");
             }
-        });*/
+        });
 
     }
 

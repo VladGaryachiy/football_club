@@ -51,7 +51,6 @@ class Contacts extends React.Component{
                         setTimeout(function () {
                             $('.result-container').removeClass('success');
                             $('.result-container').text('');
-                            success('done');
                         }, 1500);
                 });
 
@@ -75,7 +74,7 @@ class Contacts extends React.Component{
         let cart = null;
         let display;
         if(this.state.cartVisible === true){
-            cart =  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.637460730217!2d30.532735815439455!3d50.447853179475075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce52d23f0edd%3A0x45bd69e4cb11cdab!2z0LLRg9C70LjRhtGPINCc0LjRhdCw0LnQu9CwINCT0YDRg9GI0LXQstGB0YzQutC-0LPQviwgMTUsINCa0LjRl9CyLCAwMjAwMA!5e0!3m2!1sru!2sua!4v1523815452535" width="600" height="450" frameBorder="0" style={{border:0}} allowFullScreen></iframe>;
+            cart = <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2544.2363174703605!2d30.45254741543657!3d50.380793079465846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c8fd64316e59%3A0x35a04fec99db7617!2z0YPQuy4g0JzQsNGA0YjQsNC70LAg0K_QutGD0LHQvtCy0YHQutC-0LPQviwg0JrQuNC10LI!5e0!3m2!1sru!2sua!4v1523912543319" width="600" height="450" frameBorder="0" style={{border:0}} allowFullScreen></iframe>;
             display = "block";
         }
         else {
@@ -97,7 +96,7 @@ class Contacts extends React.Component{
                            Контактна інформація
                        </h1>
                        <p className="contact-where-club">
-                           Ми знаходемося за адресою: <span className="bold-contact">м.Київ -  вул. Михайла Грушевського 15</span>
+                           Ми знаходемося за адресою: <span className="bold-contact">м.Київ -  вул. Якубовського</span>
                        </p>
                        <p className="contact-phone">
                            Телефон: <span className="bold-contact">+380632520173</span>

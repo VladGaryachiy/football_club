@@ -179,7 +179,7 @@ class PayTraining extends React.Component {
     }
 
     changeCoachChild(e) {
-        let coachName = e.currentTarget.innerHTML; //selected coach
+        let coachName = e.currentTarget.childNodes[1].innerHTML; //selected coach
         let places = AllCoaches[0].filter(item => {
             return item.name === coachName;
         });
@@ -192,7 +192,7 @@ class PayTraining extends React.Component {
         $('.coach_list').css('display', 'none');
     }
     changeCoachTin(e) {
-        let coachName = e.currentTarget.innerHTML; //selected coach
+        let coachName = e.currentTarget.childNodes[1].innerHTML; //selected coach
         let places = AllCoaches[0].filter(item => {
             return item.name === coachName;
         });
@@ -206,7 +206,7 @@ class PayTraining extends React.Component {
         $('.coach_list').css('display', 'none');
     }
     changeCoachAdult(e) {
-        let coachName = e.currentTarget.innerHTML; //selected coach
+        let coachName = e.currentTarget.childNodes[1].innerHTML; //selected coach
         let places = AllCoaches[0].filter(item => {
             return item.name === coachName;
         });
@@ -378,7 +378,16 @@ class PayTraining extends React.Component {
                                             childrenGroupCoach.map((item, i) => React.createElement(
                                                 'li',
                                                 { key: i, onClick: this.changeCoachChild, className: ' form-control element-select-list' },
-                                                item.name
+                                                React.createElement(
+                                                    'div',
+                                                    { className: 'face-coach' },
+                                                    React.createElement('img', { src: item.face_coach, alt: '', className: "img-face-coach face" + item.coach_id })
+                                                ),
+                                                React.createElement(
+                                                    'div',
+                                                    { className: 'list-coach-name-container' },
+                                                    item.name
+                                                )
                                             ))
                                         )
                                     ),
@@ -477,7 +486,16 @@ class PayTraining extends React.Component {
                                             teenagerGroupCoach.map((item, i) => React.createElement(
                                                 'li',
                                                 { key: i, onClick: this.changeCoachTin, className: ' form-control element-select-list' },
-                                                item.name
+                                                React.createElement(
+                                                    'div',
+                                                    { className: 'face-coach' },
+                                                    React.createElement('img', { src: item.face_coach, alt: '', className: "img-face-coach face" + item.coach_id })
+                                                ),
+                                                React.createElement(
+                                                    'div',
+                                                    { className: 'list-coach-name-container' },
+                                                    item.name
+                                                )
                                             ))
                                         )
                                     ),
@@ -576,7 +594,16 @@ class PayTraining extends React.Component {
                                             adultGroupCoach.map((item, i) => React.createElement(
                                                 'li',
                                                 { key: i, onClick: this.changeCoachAdult, className: ' form-control element-select-list' },
-                                                item.name
+                                                React.createElement(
+                                                    'div',
+                                                    { className: 'face-coach' },
+                                                    React.createElement('img', { src: item.face_coach, alt: '', className: "img-face-coach face" + item.coach_id })
+                                                ),
+                                                React.createElement(
+                                                    'div',
+                                                    { className: 'list-coach-name-container' },
+                                                    item.name
+                                                )
                                             ))
                                         )
                                     ),

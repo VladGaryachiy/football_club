@@ -21,7 +21,7 @@
 }
 .menu-links-container{
     padding: 0;
-    margin-top:-50px;
+    margin-top: -240px;
 }
 .navbar-ico{
     display: inline-block;
@@ -87,4 +87,15 @@
     width: 100%;
     height: 100%;
 
+}
+
+.container-logo{
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+.logo-main{
+    width: 60px;
+    height: 75px;
+    margin-bottom: 30px;
 }

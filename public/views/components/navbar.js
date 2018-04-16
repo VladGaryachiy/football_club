@@ -38,6 +38,11 @@ class Navbar extends React.Component {
             'div',
             { className: 'navbar-container-main' },
             React.createElement(
+                'div',
+                { className: 'container-logo' },
+                React.createElement('img', { src: '../../img/logo-main.png', alt: '', className: 'logo-main' })
+            ),
+            React.createElement(
                 'table',
                 { className: 'navbar-table' },
                 React.createElement(
